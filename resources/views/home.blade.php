@@ -1,9 +1,5 @@
-<x-layout>
-    hello world
-    <ul class="list-disc">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-    </ul>
+<x-layout title="Home" nav='home'>
+    <div class="flex flex-col text-center justify-center h-screen">
+        <h1 class="font-bold text-4xl">LOG APP</h1>
+    </div>
 </x-layout>
