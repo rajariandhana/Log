@@ -9,6 +9,9 @@ Route::get('/logout', function(){
 
 })->name('logout');
 
+// Route::prefix('/input')->controller(InputController::class)->group(function (){
+    // Route::get('/hello','hello');
+// });
 Route::group(['prefix'=>'finance'], function(){
     Route::get('/', fn() => view('finance'))->name('finance');
     Route::get('/categories', fn() => view('finance'))->name('finance.categories');
