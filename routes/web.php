@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FinanceController;
 
 // Route::get('/', function () {return view('home');})->name('home');
 Route::get('/', fn() => view('home'))->name('home');
@@ -12,11 +13,20 @@ Route::get('/logout', function(){
 // Route::prefix('/input')->controller(InputController::class)->group(function (){
     // Route::get('/hello','hello');
 // });
-Route::group(['prefix'=>'finance'], function(){
-    Route::get('/', fn() => view('finance'))->name('finance');
-    Route::get('/categories', fn() => view('finance'))->name('finance.categories');
-    Route::get('/presets', fn() => view('finance'))->name('finance.presets');
+Route::controller(FinanceController::class)->group(function(){
+    Route::get('/finance', 'index')->name('finance.index');
+    // Route::post('/finance', 'store')->name('finance.store');
+    Route::get('/finance/logs', 'logs')->name('finance.logs');
+    Route::get('/finance/logs/{id}', 'log')->name('finance.log');
+    Route::get('/finance/categories', 'categories')->name('finance.categories');
+    Route::get('/finance/presets', 'presets')->name('finance.presets');
 });
+
+// Route::group(['prefix'=>'finance'], function(){
+//     Route::get('/', fn() => view('finance'))->name('finance');
+//     Route::get('/categories', fn() => view('finance'))->name('finance.categories');
+//     Route::get('/presets', fn() => view('finance'))->name('finance.presets');
+// });
 
 Route::group(['prefix'=>'exercise'], function(){
     Route::get('/', fn() => view('exercise'))->name('exercise');

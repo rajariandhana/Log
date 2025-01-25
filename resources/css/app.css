@@ -1,11 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
 @layer components {
     .base {
       @apply bg-white p-4 rounded-md shadow-md flex flex-col gap-y-4;
     }
     .btn-primary {
         @apply text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 w-full focus:outline-none;
+    }
+    /* .error{
+      @apply text-red-500 bg-red-200 border-[1px] border-red-500 text-sm w-fit px-2 py-1 rounded-md shadow-md;
+    } */
+    .error{
+      @apply text-red-500 text-sm -mt-2;
     }
   }
