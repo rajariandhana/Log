@@ -7,7 +7,7 @@ use App\Models\FinanceLog;
 class FinanceController extends Controller
 {
     public function index(){
-        return view('finance');
+        return view('finance.index');
     }
     public function store(Request $request){
         $validated = $request->validate([
@@ -17,5 +17,8 @@ class FinanceController extends Controller
             'description_1' => 'nullable',
             'description_2' => 'nullable',
         ]);
+    }
+    public function logs(){
+        return view('finance.logs');
     }
 }

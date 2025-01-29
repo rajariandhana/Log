@@ -3,11 +3,11 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\FinanceCategory;
 use Livewire\Attributes\Validate;
+use App\Models\FinanceCategory;
 use App\Models\FinanceLog;
 
-class FinanceCreate extends Component
+class FinanceUpdate extends Component
 {
     #[Validate('required|numeric|min:0|max:9999')]
     public $amount_dolar;
@@ -23,21 +23,22 @@ class FinanceCreate extends Component
     public $date;
 
     public $categories;
-    // $amount_dolar, $amount_cent, $category_id, $description_1, $description_2;
+    public $log;
+
     public function mount(){
+        $this->amount_dolar = $this->log->amount_dolar;
+        $this->amount_cent = $this->log->amount_cent;
+        $this->finance_category_id = $this->log->finance_category_id;
+        $this->description_1 = $this->log->description_1;
+        $this->description_2 = $this->log->description_2;
         $this->categories = FinanceCategory::all();
         $this->date=now()->format('Y-m-d');
     }
-    public function Store(){
-        // dd("here");
-        $this->validate();
-        FinanceLog::create(
-            $this->only(['amount_dolar', 'amount_cent', 'finance_category_id', 'description_1', 'description_2','date'])
-        );
-        // create modal or sumtin
+    public function Update(){
+
     }
     public function render()
     {
-        return view('livewire.finance-create');
+        return view('livewire.finance-update');
     }
 }

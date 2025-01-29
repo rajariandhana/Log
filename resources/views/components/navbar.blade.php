@@ -16,7 +16,8 @@
 
         @switch($nav)
             @case('finance')
-                <x-navlink rn="finance.index" name="Finance"></x-navlink>
+                <x-navlink rn="finance.index" name="New"></x-navlink>
+                <x-navlink rn="finance.logs" name="Logs"></x-navlink>
                 <x-navlink rn="finance.categories" name="Categories"></x-navlink>
                 <x-navlink rn="finance.presets" name="Presets"></x-navlink>
                 @break

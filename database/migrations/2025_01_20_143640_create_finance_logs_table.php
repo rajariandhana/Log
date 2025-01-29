@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description_1')->nullable();
             $table->text('description_2')->nullable();
             $table->foreignIdFor(FinanceCategory::class);
-            $table->date('date')->default(now());
+            $table->date('date');
             $table->timestamps();
         });
     }

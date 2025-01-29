@@ -9,6 +9,12 @@ export default {
         './resources/**/*.js',
         './resources/**/*.vue',
     ],
+    safelist: [
+        'bg-red-500',
+        'bg-blue-500',
+        'bg-green-500',
+        // Add all other potential color classes
+    ],
     theme: {
         extend: {
             fontFamily: {

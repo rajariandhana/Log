@@ -1,17 +1,15 @@
-<form wire:submit='Store' class="base">
+<form wire:submit='Update' class="flex flex-col gap-y-2">
     @csrf
 
     <div class="flex">
-        <span
-            class="inline-flex items-center px-3 text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md">
+        <span class="inline-flex items-center px-3 text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md">
             $
         </span>
         <input type="number" wire:model='amount_dolar'
             class="rounded-none bg-gray-50 border border-gray-300 text-gray-900 block flex-1 w-2/3 p-2.5">
         <input type="number" wire:model='amount_cent' placeholder="00"
             class="rounded-none bg-gray-50 border border-gray-300 text-gray-900 block flex-1 w-1/3 p-2.5">
-        <span
-            class="inline-flex items-center px-3 text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-r-md">
+        <span class="inline-flex items-center px-3 text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-r-md">
             ¢
         </span>
     </div>
@@ -21,24 +19,16 @@
     @error('amount_cent')
         <span class="error">{{ $message }}</span>
     @enderror
-    <div x-data="{ open: true }">
+    <div>
         <div class="flex justify-between w-full h-10 bg-red-50">
-            <select wire:model="finance_category_id"
-                class="bg-gray-50 w-3/4 border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5 y-600">
+            <select wire:model="finance_category_id" class="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5 y-600">
                 <option value="" selected>Categories</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
             </select>
-            <button @click="open = !open" class="h-10 w-fit btn-primary items-center justify-center flex">
-                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                        d="M20 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6h-2m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4" />
-                </svg>
-            </button>
         </div>
-        <div x-show="open" x-transition class="flex flex-col w-full h-40 gap-y-2">
+        <div class="flex flex-col w-full h-40 gap-y-2">
             <input type="textarea" wire:model='description_1' placeholder="Description..."
                 class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 flex-1 w-full p-2.5 rounded-md">
             <input type="textarea" wire:model='description_2' placeholder="More description..."
@@ -53,7 +43,8 @@
     @error('finance_category_id')
         <span class="error">{{ $message }}</span>
     @enderror
-
-    <button type="submit" class="btn-primary">SUBMIT</button>
-    {{-- @dump(App\Models\FinanceLog::all()) --}}
+    <div class="flex w-full gap-x-2 bg-red-50">
+        <button wire:click='Delete' class="btn-danger">DELETE</button>
+        <button type="submit" class="btn-primary">UPDATE</button>
+    </div>
 </form>
