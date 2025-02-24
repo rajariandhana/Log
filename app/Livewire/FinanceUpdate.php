@@ -35,7 +35,20 @@ class FinanceUpdate extends Component
         $this->date=now()->format('Y-m-d');
     }
     public function Update(){
-
+        $this->validate();
+        $this->log->amount_dolar = $this->amount_dolar;
+        $this->log->amount_cent = $this->amount_cent;
+        $this->log->finance_category_id = $this->finance_category_id;
+        $this->log->description_1 = $this->description_1;
+        $this->log->description_2 = $this->description_2;
+        $this->log->date = $this->date;
+        $this->log->update();
+        // dd("here");
+        // $this->categories = FinanceCategory::all();
+        // $this->date=now()->format('Y-m-d');
+    }
+    public function Delete(){
+        $this->log->delete();
     }
     public function render()
     {
