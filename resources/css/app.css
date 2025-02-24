@@ -1,11 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
 @layer components {
     .base {
       @apply bg-white p-4 rounded-md shadow-md flex flex-col gap-y-4;
     }
     .btn-primary {
-        @apply text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 w-full focus:outline-none;
+        @apply text-white bg-indigo-500 hover:bg-indigo-600 rounded-lg text-sm px-5 py-2.5 mb-2 w-full;
+    }
+    .btn-primary-alt {
+        @apply text-white bg-indigo-200 hover:bg-indigo-300 rounded-lg text-sm px-5 py-2.5 mb-2 w-full border-[1px] border-indigo-500 text-indigo-500;
+    }
+    .btn-danger {
+        @apply text-white bg-red-500 hover:bg-red-600 rounded-lg text-sm px-5 py-2.5 mb-2 w-full;
+    }
+    .btn-danger-alt {
+        @apply text-white bg-red-200 hover:bg-red-300 rounded-lg text-sm px-5 py-2.5 mb-2 w-full border-[1px] border-red-500 text-red-500;
+    }
+    .btn-success {
+        @apply text-white bg-green-500 hover:bg-green-600 rounded-lg text-sm px-5 py-2.5 mb-2 w-full;
+    }
+    .btn-success-alt {
+        @apply text-white bg-green-200 hover:bg-green-300 rounded-lg text-sm px-5 py-2.5 mb-2 w-full border-[1px] border-green-500 text-green-500;
+    }
+    /* .error{
+      @apply text-red-500 bg-red-200 border-[1px] border-red-500 text-sm w-fit px-2 py-1 rounded-md shadow-md;
+    } */
+    .error{
+      @apply text-red-500 text-sm -mt-2;
     }
   }
