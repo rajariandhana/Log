@@ -65,36 +65,52 @@
             </form>
         </div>
     </div>
-    <table class="table-auto w-full">
-        <thead>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($logs as $log)
-                <tr class="flex justify-between items-center bg-white px-4 py-1 h-16 w-full rounded-lg shadow-lg text-sm mb-2">
-                    <td class="">{{ $log->date }}</td>
-                    <td class="w-12 text-xl text-indigo-500">${{ $log->amount_dolar }},{{$log->amount_cent ?? '00'}}</td>
-                    <td class="w-12">
-                        <span class="bg-{{$log->category->color}}-500 px-2 py-1 rounded">
-                            {{ $log->category->name }}
-                        </span>
-                    </td>
-                    <td class="w-6">
-                        <button wire:click='Edit({{$log}})' @click="open = true">
-                            <svg class="w-6 h-6 text-indigo-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4h4m0 0v4m0-4-5 5M8 20H4m0 0v-4m0 4 5-5"/>
-                                </svg>
-                        </button>
-                    </td>
+    <div class="relative overflow-y-auto h-[510px] shadow-xl flex flex-col gap-y-2 no-scrollbar">
+        {{-- <table class="w-full">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="">
+                @foreach ($logs as $log)
+                    <tr class="bg-white border-b border-gray-200 h-12 px-4 w-full flex justify-between items-center">
+                        <td class="">{{ $log->date }}</td>
+                        <td class="w-12 text-xl text-indigo-500">${{ $log->amount_dolar }},{{$log->amount_cent ?? '00'}}</td>
+                        <td class="w-12">
+                            <span class="bg-{{$log->category->color}}-500 px-2 py-1 rounded">
+                                {{ $log->category->name }}
+                            </span>
+                        </td>
+                        <td class="w-6">
+                            <button wire:click='Edit({{$log}})' @click="open = true">
+                                <svg class="w-6 h-6 text-indigo-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4h4m0 0v4m0-4-5 5M8 20H4m0 0v-4m0 4 5-5"/>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table> --}}
+        @foreach ($logs as $log)
+        <button class="bg-white w-full h-12 px-4 py-2 rounded-md shadow-md flex justify-between items-center"
+            wire:click='Edit({{$log}})' @click="open = true">
+            <span class="w-24">{{ $log->date }}</span>
+            <span class="w-28 text-xl text-indigo-500">${{ $log->amount_dolar }},{{$log->amount_cent ?? '00'}}</span>
+            <span class="w-24">
+                <span class="bg-{{$log->category->color}}-500 px-2 py-1 rounded text-white">
+                    {{ $log->category->name }}
+                </span>
+            </span>
+        </button>
+        @endforeach
+    </div>
+
+
     <div class="fixed bottom-20">
         {{ $logs->links() }}
     </div>

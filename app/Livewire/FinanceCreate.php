@@ -38,6 +38,7 @@ class FinanceCreate extends Component
         );
         // $this->success='Log created successfully';
         $this->success=true;
+        $this->reset(['amount_dolar', 'amount_cent', 'finance_category_id', 'description_1', 'description_2','date']);
         // session()->flash('success','Log created');
     }
 

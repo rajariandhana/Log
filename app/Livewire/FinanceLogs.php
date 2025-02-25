@@ -64,10 +64,10 @@ class FinanceLogs extends Component
     }
     public function Delete(){
         // dd("here");
-        $this->log->delete();
-        // $temp = $this->log;
+        // $this->log->delete();
+        $temp = $this->log;
         $this->Close();
-        // $temp->delete();
+        $temp->delete();
     }
     public function render()
     {

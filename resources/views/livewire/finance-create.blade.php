@@ -53,7 +53,7 @@
         <span class="error">{{ $message }}</span>
     @enderror
 
-    <button type="submit" class="btn-primary">SUBMIT</button>
+    <button type="submit" class="btn-primary">CREATE</button>
     {{-- @isset($success)
         <span class="btn-success-alt transition-all">{{$success}}</span>
     @endisset --}}
